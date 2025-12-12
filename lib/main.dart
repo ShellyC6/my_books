@@ -3,6 +3,7 @@ import 'package:books/features/manage_books/presentation/pages/bookshelf_page.da
 import 'package:books/features/search_books/presentation/pages/search_page.dart';
 import 'package:books/features/stats/presentation/pages/stats_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:go_router/go_router.dart';
 
 import 'core/routes/routes.dart';
@@ -61,6 +62,7 @@ final _router = GoRouter(
 // MyApp
 
 void main() {
+  usePathUrlStrategy();
   runApp(const MyApp());
 }
 
