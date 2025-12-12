@@ -1,18 +1,11 @@
-import 'package:books/core/routes/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class MainPage extends StatefulWidget {
-  final Widget child;
+class MainPage extends StatelessWidget {
+  final StatefulNavigationShell child;
 
   const MainPage({super.key, required this.child});
-
-  @override
-  State<StatefulWidget> createState() => _MainPageState();
-}
-
-class _MainPageState extends State<MainPage> {
-  int index = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +15,7 @@ class _MainPageState extends State<MainPage> {
       mobile: (BuildContext context) => Scaffold(
         bottomNavigationBar: NavigationBar(
           onDestinationSelected: onSelected,
-          selectedIndex: index,
+          selectedIndex: child.currentIndex,
           destinations: const [
             NavigationDestination(
               selectedIcon: Icon(Icons.book),
@@ -43,7 +36,7 @@ class _MainPageState extends State<MainPage> {
         ),
         body: Column(
           children: [
-            Expanded(child: widget.child),
+            Expanded(child: child),
             const Text('mobile'),
           ],
         ),
@@ -55,7 +48,7 @@ class _MainPageState extends State<MainPage> {
           children: [
             NavigationRail(
               onDestinationSelected: onSelected,
-              selectedIndex: index,
+              selectedIndex: child.currentIndex,
               labelType: NavigationRailLabelType.all,
               destinations: const [
                 NavigationRailDestination(
@@ -78,7 +71,7 @@ class _MainPageState extends State<MainPage> {
             Expanded(
               child: Column(
                 children: [
-                  Expanded(child: widget.child,),
+                  Expanded(child: child,),
                   const Text('tablet')
                 ],
               ),
@@ -93,7 +86,7 @@ class _MainPageState extends State<MainPage> {
           children: [
             NavigationRail(
               onDestinationSelected: onSelected,
-              selectedIndex: index,
+              selectedIndex: child.currentIndex,
               labelType: NavigationRailLabelType.all,
               destinations: const [
                 NavigationRailDestination(
@@ -116,7 +109,7 @@ class _MainPageState extends State<MainPage> {
             Expanded(
               child: Column(
                 children: [
-                  Expanded(child: widget.child,),
+                  Expanded(child: child,),
                   const Text('desktop')
                 ],
               ),
@@ -128,24 +121,6 @@ class _MainPageState extends State<MainPage> {
   }
 
   void onSelected(int newIndex) {
-    String routeName;
-    switch(newIndex){
-      case 0:
-        routeName = routeBookshelf;
-        break;
-      case 1:
-        routeName = routeSearch;
-        break;
-      case 2:
-        routeName = routeStats;
-        break;
-      default:
-        routeName = routeBookshelf;
-        break;
-    }
-    navKey.currentState?.pushNamed(routeName);
-    setState(() {
-      index = newIndex;
-    });
+    child.goBranch(newIndex);
   }
 }
