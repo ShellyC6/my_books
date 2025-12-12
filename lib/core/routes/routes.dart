@@ -1,7 +1,19 @@
-import 'package:flutter/cupertino.dart';
+abstract class AppRouteName {
+  static const login = "login";
+  static const bookshelf = "bookshelf";
+  static const search = "search";
+  static const stats = "stats";
+}
 
-const String routeBookshelf = "/bookshelf";
-const String routeSearch = "/search";
-const String routeStats = "/stats";
+abstract class AppRoutePath {
+  static const login = "/login";
+  static const bookshelf = "/bookshelf";
+  static const search = "/search";
+  static const stats = "/stats";
+}
 
-final navKey = GlobalKey<NavigatorState>();
+abstract class AppRouteIndex {
+  static const bookshelf = 0;
+  static const search = 1;
+  static const stats = 2;
+}
