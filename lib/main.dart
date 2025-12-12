@@ -5,6 +5,8 @@ import 'package:books/features/stats/presentation/pages/stats_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:go_router/go_router.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 import 'core/routes/routes.dart';
 import 'features/navigation/presentation/pages/main_page.dart';
@@ -61,8 +63,12 @@ final _router = GoRouter(
 
 // MyApp
 
-void main() {
+Future<void> main() async {
   usePathUrlStrategy();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
