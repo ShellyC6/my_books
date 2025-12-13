@@ -19,7 +19,7 @@ final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 
 final _router = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: '/bookshelf',
+  initialLocation: '/login',
   routes: [
     GoRoute(
       name: AppRouteName.login,

@@ -1,4 +1,6 @@
+import 'package:books/core/routes/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -10,8 +12,11 @@ class LoginPage extends StatelessWidget {
         Expanded(
           child: Container(
             color: Colors.white,
-            child: const Center(
-              child: Text("Login Page"),
+            child: Center(
+              child: TextButton(
+                onPressed: ()=> context.goNamed(AppRouteName.bookshelf),
+                child: const Text("Login and go to bookshelf"),
+              ),
             ),
           ),
         ),
