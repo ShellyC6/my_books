@@ -1,5 +1,5 @@
 import 'package:books/features/login_logout/presentation/pages/login_page.dart';
-import 'package:books/features/manage_books/presentation/pages/bookshelf_page.dart';
+import 'package:books/features/bookshelf/presentation/pages/bookshelf_page.dart';
 import 'package:books/features/search_books/presentation/pages/search_page.dart';
 import 'package:books/features/stats/presentation/pages/stats_page.dart';
 import 'package:flutter/material.dart';
