@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 
 class Book extends Equatable {
-  final String isbn;
-  final String title;
-  final String publisher;
-  final String publishingDate;
-  final String publishingCountry;
-  final String description;
+  final String? isbn;
+  final String? title;
+  final String? publisher;
+  final String? publishingDate;
+  final String? publishingCountry;
+  final String? description;
   final String? imageLink;
   final int? pageCount;
 
@@ -15,5 +15,14 @@ class Book extends Equatable {
   );
 
   @override
-  List<Object> get props => [isbn];
+  List<Object> get props => [
+    isbn??'',
+    title??'',
+    publisher??'',
+    publishingDate??'',
+    publishingCountry??'',
+    description??'',
+    imageLink??'',
+    pageCount??0,
+  ];
 }
