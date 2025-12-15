@@ -10,9 +10,9 @@ class Book extends Equatable {
   final String? imageLink;
   final int? pageCount;
 
-  const Book(
+  const Book({
     this.isbn, this.title, this.publisher, this.publishingDate, this.publishingCountry, this.description, this.imageLink, this.pageCount
-  );
+  });
 
   @override
   List<Object> get props => [

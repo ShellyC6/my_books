@@ -23,6 +23,6 @@ class GetRandomBook extends UseCase<Book, NoParams> {
     // and use it to retrieve the element
     var chosenPublisher = publishers[random.nextInt(publishers.length)];
 
-    return await repository.getRandomBook(chosenPublisher, random.nextInt(100));
+    return await repository.getRandomBook(publisher: chosenPublisher, index: random.nextInt(100));
   }
 }

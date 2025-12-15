@@ -5,5 +5,5 @@ import '../entities/book.dart';
 
 abstract class BookRepository {
   Future<Either<Failure, Book>> getBookByIsbn(String isbn);
-  Future<Either<Failure, Book>> getRandomBook(String publisher, int index);
+  Future<Either<Failure, Book>> getRandomBook({required String publisher, required int index});
 }
