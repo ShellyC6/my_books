@@ -21,6 +21,7 @@ final _router = GoRouter(
   navigatorKey: _rootNavigatorKey,
   initialLocation: '/bookshelf',
   routes: [
+
     GoRoute(
       name: AppRouteName.login,
       path: AppRoutePath.login,
