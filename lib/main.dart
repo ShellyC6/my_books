@@ -10,6 +10,7 @@ import 'firebase_options.dart';
 
 import 'core/routes/routes.dart';
 import 'features/navigation/presentation/pages/main_page.dart';
+import 'injection_container.dart' as di;
 
 // GoRouter configuration
 // router created using :
@@ -65,6 +66,7 @@ final _router = GoRouter(
 // MyApp
 
 Future<void> main() async {
+  di.init();
   usePathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
