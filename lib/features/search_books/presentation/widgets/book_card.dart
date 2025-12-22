@@ -1,3 +1,4 @@
+import 'package:books/features/search_books/presentation/widgets/book_cover.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/entities/book.dart';
@@ -19,10 +20,8 @@ class BookCard extends StatelessWidget {
             const SizedBox(height: 10),
             Text(book.title??'unknown'),
             const SizedBox(height: 10),
-            const Expanded(
-              child: Image(
-                image: AssetImage('assets/images/random_cover.png'),
-              ),
+            Expanded(
+              child: BookCover(book.imageLink??''),
             ),
             const SizedBox(height: 10),
             const Text("Suzanne Collins"),

@@ -15,9 +15,7 @@ class SearchPage extends StatelessWidget {
       color: Colors.white,
       child: Column(
         children: [
-          const SizedBox(height: 20),
-          const Text("Search page"),
-          const SizedBox(height: 20),
+          const SizedBox(height: 30),
           SearchPageController(key: key),
           Expanded(
             child: GridView.extent(
@@ -30,7 +28,7 @@ class SearchPage extends StatelessWidget {
                   builder: (context, state) {
                     switch (state) {
                       case Empty():
-                        return const MessageDisplay(message: 'no book yet');
+                        return const MessageDisplay(message: 'utilise les boutons ci-dessus pour chercher un livre');
                       case Loading():
                         return const MessageDisplay(message: 'loading...');
                       case Loaded():
