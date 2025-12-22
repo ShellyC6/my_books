@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../domain/entities/book.dart';
+
 class BookCard extends StatelessWidget {
-  const BookCard({super.key});
+  final Book book;
+
+  const BookCard(this.book, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,19 +15,19 @@ class BookCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(15),
         child: Column(
-          children: const [
-            SizedBox(height: 10),
-            Text("The Hunger Games"),
-            SizedBox(height: 10),
-            Expanded(
+          children: [
+            const SizedBox(height: 10),
+            Text(book.title??'unknown'),
+            const SizedBox(height: 10),
+            const Expanded(
               child: Image(
                 image: AssetImage('assets/images/random_cover.png'),
               ),
             ),
-            SizedBox(height: 10),
-            Text("Suzanne Collins"),
-            Text("2008"),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
+            const Text("Suzanne Collins"),
+            Text(book.publishingDate??'unknown'),
+            const SizedBox(height: 10),
           ],
         ),
       ),

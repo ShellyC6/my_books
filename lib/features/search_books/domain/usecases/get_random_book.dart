@@ -14,7 +14,7 @@ class GetRandomBook extends UseCase<Book, NoParams> {
 
   @override
   Future<Either<Failure, Book>> call(NoParams params) async {
-    const publishers = ['kana', 'kurokawa', 'pika', 'glénat', 'le+lézard+noir',];
+    const publishers = ['kana', 'kurokawa', 'pika', ];
 
     // generates a new Random object
     final random = Random();

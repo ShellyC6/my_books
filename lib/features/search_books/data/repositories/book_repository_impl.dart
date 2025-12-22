@@ -33,7 +33,7 @@ class BookRepositoryImpl implements BookRepository {
       final book = await getIsbnOrRandom();
       return Right(book);
     } on ServerException {
-      return Left(ServerFailure());
+      return const Left(ServerFailure());
     }
   }
 }
