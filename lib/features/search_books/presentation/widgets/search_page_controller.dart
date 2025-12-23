@@ -15,43 +15,59 @@ class SearchPageControllerState extends State<SearchPageController> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Flex(
+      direction: _getFlexDirection(),
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(width:200, child: TextField(
-          controller: controller,
-          keyboardType: const TextInputType.numberWithOptions(),
-          decoration: const InputDecoration(
-            hintText: 'ISBN',
-          ),
-          onChanged: (value) {
-            inputString = value;
-          },
-          onSubmitted: (_) {
-            dispatchGetByIsbn();
-          },
-        )),
-        const SizedBox(width: 20),
-        TextButton(
-          onPressed: dispatchGetByIsbn,
-          child: const Text("Voir ce livre"),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width:200,
+              child: TextField(
+                controller: controller,
+                keyboardType: const TextInputType.numberWithOptions(),
+                decoration: const InputDecoration(
+                  hintText: 'ISBN',
+                ),
+                onChanged: (value) {
+                  inputString = value;
+                },
+                onSubmitted: (_) {
+                  _dispatchGetByIsbn();
+                },
+              ),
+            ),
+            TextButton(
+              onPressed: _dispatchGetByIsbn,
+              child: const Text("Voir ce livre"),
+            )
+          ],
         ),
-        const SizedBox(width: 50),
+        const SizedBox(
+          height: 25,
+          width: 50,
+        ),
         TextButton(
-          onPressed: dispatchGetRandom,
+          onPressed: _dispatchGetRandom,
           child: const Text("Voir un livre au hasard"),
         ),
       ],
     );
   }
 
-  void dispatchGetByIsbn() {
+  void _dispatchGetByIsbn() {
     // Clearing the TextField to prepare it for the next inputted number
     controller.clear();
     context.read<BookBloc>().add(GetBookByIsbnEvent(inputString));
   }
 
-  void dispatchGetRandom() {
+  void _dispatchGetRandom() {
     context.read<BookBloc>().add(const GetRandomBookEvent());
+  }
+
+  Axis _getFlexDirection() {
+    final isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
+    return isLandscape ? Axis.horizontal : Axis.vertical;
   }
 }
