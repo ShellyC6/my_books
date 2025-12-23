@@ -24,7 +24,8 @@ class BookCover extends StatelessWidget {
     if(coverLink !=''){
       return Container(
         alignment: Alignment.center,
-        width: 100,
+        width: 250,
+        height: 400,
         child: HtmlElementView(viewType: elementViewId),
       );
     } else {
@@ -38,8 +39,6 @@ class BookCover extends StatelessWidget {
       elementViewId,
           (int viewId, {Object? params}) {
         final imgElement = html.HTMLImageElement()
-          ..style.height = '100%'
-          ..style.width = '100%'
           ..src = url
           ..id = '$viewId-image';
         return imgElement;

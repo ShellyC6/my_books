@@ -12,29 +12,54 @@ class BookCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.all(10),
-      elevation: 2,
-      child: Container(
-        padding: const EdgeInsets.all(15),
-        child: Column(
+    return Padding(
+      padding: const EdgeInsetsGeometry.symmetric(horizontal: 30, vertical: 5),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(7),
+        child: Stack(
+          alignment: AlignmentDirectional.bottomStart,
           children: [
-            const SizedBox(height: 10),
-            Text(
-              book.title??'unknown',
-              textAlign: TextAlign.center,
+            Center(child: BookCover(book.imageLink??'')),
+            Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: <Color>[
+                    Colors.black.withAlpha(0),
+                    Colors.black12,
+                    Colors.black45,
+                  ],
+                ),
+              ),
             ),
-            const SizedBox(height: 10),
-            Expanded(
-              child: BookCover(book.imageLink??''),
+            Padding(
+              padding: const EdgeInsetsGeometry.all(10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(3),
+                    child: Text(
+                      book.title??'unknown',
+                      textAlign: TextAlign.start,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        backgroundColor: Colors.deepOrangeAccent,
+                        fontSize: 15.0,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    book.authors.toString(),
+                    textAlign: TextAlign.start,
+                    style: const TextStyle(color: Colors.white, fontSize: 13.0),
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: 10),
-            Text(
-              book.authors.toString(),
-              textAlign: TextAlign.center,
-            ),
-            Text(book.publishingDate??'unknown'),
-            const SizedBox(height: 10),
           ],
         ),
       ),
