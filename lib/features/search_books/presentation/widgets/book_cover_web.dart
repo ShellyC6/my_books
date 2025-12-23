@@ -1,8 +1,7 @@
 // created from https://medium.com/@mrlimon28/flutter-web-troubleshooting-guide-2025-fixing-image-picker-database-screen-size-and-cors-issues-fef7e8676562
 
-import 'dart:ui_web' as ui_web;
+import 'dart:ui_web' if (dart.library.io) '' as ui_web;
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:web/web.dart' as html;
 
@@ -11,7 +10,7 @@ class BookCover extends StatelessWidget {
   late final String elementViewId;
 
   BookCover(this.coverLink, {super.key}) {
-    if(kIsWeb && coverLink!='') {
+    if(coverLink!='') {
       _createHtmlImage(coverLink);
     }
   }
@@ -23,15 +22,11 @@ class BookCover extends StatelessWidget {
 
   Widget _chooseImage() {
     if(coverLink !=''){
-      if(kIsWeb){
-        return Container(
-          alignment: Alignment.center,
-          width: 100,
-          child: HtmlElementView(viewType: elementViewId),
-        );
-      } else {
-        return Image.network(coverLink??'');
-      }
+      return Container(
+        alignment: Alignment.center,
+        width: 100,
+        child: HtmlElementView(viewType: elementViewId),
+      );
     } else {
       return Image.asset('assets/images/cover_unavailable.png');
     }

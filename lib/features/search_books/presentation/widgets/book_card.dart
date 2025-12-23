@@ -1,4 +1,6 @@
-import 'package:books/features/search_books/presentation/widgets/book_cover.dart';
+// created from https://stackoverflow.com/a/73824426   // Posted by Vitali   // Retrieved 2025-12-23, License - CC BY-SA 4.0
+
+import 'package:books/features/search_books/presentation/widgets/book_cover_mobile.dart' if (dart.library.html) 'package:books/features/search_books/presentation/widgets/book_cover_web.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/entities/book.dart';
@@ -18,13 +20,19 @@ class BookCard extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 10),
-            Text(book.title??'unknown'),
+            Text(
+              book.title??'unknown',
+              textAlign: TextAlign.center,
+            ),
             const SizedBox(height: 10),
             Expanded(
               child: BookCover(book.imageLink??''),
             ),
             const SizedBox(height: 10),
-            const Text("Suzanne Collins"),
+            Text(
+              book.authors.toString(),
+              textAlign: TextAlign.center,
+            ),
             Text(book.publishingDate??'unknown'),
             const SizedBox(height: 10),
           ],

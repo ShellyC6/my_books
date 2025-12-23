@@ -3,7 +3,9 @@ import 'package:books/features/search_books/domain/entities/book.dart';
 class BookModel extends Book {
   const BookModel({
     required isbn,
+    required googleId,
     required title,
+    required authors,
     required publisher,
     required publishingDate,
     required publishingCountry,
@@ -12,7 +14,9 @@ class BookModel extends Book {
     required pageCount,
   }): super(
     isbn:isbn,
+    googleId: googleId,
     title: title,
+    authors: authors,
     publisher: publisher,
     publishingDate: publishingDate,
     publishingCountry: publishingCountry,
@@ -25,7 +29,9 @@ class BookModel extends Book {
 
     var bookData = {
       'isbn': "",
+      'googleId': "",
       'title': "",
+      'authors': [""],
       'publisher': "",
       'publishingDate': "",
       'publishingCountry': "",
@@ -44,10 +50,14 @@ class BookModel extends Book {
           }
         }
       }
+      // google id
+      bookData['googleId'] = json['id']??'';
       // title
       bookData['title'] = json['volumeInfo']['title']??'inconnu';
+      // authors
+      bookData['authors'] = json['volumeInfo']['authors']??['inconnu'];
       // publisher
-      bookData['publisher'] = json['volumeInfo']['title']??'inconnu';
+      bookData['publisher'] = json['volumeInfo']['publisher']??'inconnu';
       // publishing date
       if(json['volumeInfo']['publishedDate'] != null) {
         // try to parse the date to get the year, if unsuccessful then keep the whole string
@@ -62,14 +72,15 @@ class BookModel extends Book {
       // description
       bookData['description'] = json['volumeInfo']['description']??'inconnu';
       // image link
-      if(json['volumeInfo']['imageLinks'] != null) {
+      /*if(json['volumeInfo']['imageLinks'] != null) {
         bookData['imageLink'] = json['volumeInfo']['imageLinks']['medium']??
             json['volumeInfo']['imageLinks']['small']??
             json['volumeInfo']['imageLinks']['large']??
             json['volumeInfo']['imageLinks']['thumbnail']??
             json['volumeInfo']['imageLinks']['smallThumbnail']??
             '';
-      }
+      }*/
+      bookData['imageLink'] = "http://books.google.com/books/content?id=${bookData['googleId']}&printsec=frontcover&img=1&zoom=1";
       // page count
       bookData['pageCount'] = json['volumeInfo']['pageCount']??0;
     }
@@ -80,7 +91,9 @@ class BookModel extends Book {
 
     return BookModel(
       isbn: bookData['isbn'],
+      googleId: bookData['googleId'],
       title: bookData['title'],
+      authors: bookData['authors'],
       publisher: bookData['publisher'],
       publishingDate: bookData['publishingDate'],
       publishingCountry: bookData['publishingCountry'],
@@ -92,8 +105,10 @@ class BookModel extends Book {
 
   Map<String, dynamic> toJson() {
     return {
-      'isbn':isbn,
+      'isbn': isbn,
+      'googleId': googleId,
       'title': title,
+      'authors': authors,
       'publisher': publisher,
       'publishingDate': publishingDate,
       'publishingCountry': publishingCountry,
