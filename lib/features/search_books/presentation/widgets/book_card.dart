@@ -44,6 +44,8 @@ class BookCard extends StatelessWidget {
                     child: Text(
                       book.title??'unknown',
                       textAlign: TextAlign.start,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                         color: Colors.white,
                         backgroundColor: Colors.deepOrangeAccent,
@@ -55,6 +57,8 @@ class BookCard extends StatelessWidget {
                   Text(
                     book.authors.toString(),
                     textAlign: TextAlign.start,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(color: Colors.white, fontSize: 13.0),
                   ),
                 ],
