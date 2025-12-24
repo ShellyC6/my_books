@@ -12,7 +12,12 @@ class BookCover extends StatelessWidget {
 
   Widget _chooseImage() {
     if(coverLink !=''){
-      return Image.network(coverLink);
+      return Image.network(
+        coverLink,
+        fit: BoxFit.fill,
+        width: 500,
+        height: 500,
+      );
     } else {
       return Image.asset('assets/images/cover_unavailable.png');
     }

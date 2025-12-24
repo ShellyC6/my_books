@@ -42,7 +42,6 @@ class MainPage extends StatelessWidget {
           body: Column(
             children: [
               Expanded(child: child),
-              const Text('mobile'),
             ],
           ),
         ),
@@ -77,7 +76,6 @@ class MainPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Expanded(child: child,),
-                    const Text('tablet')
                   ],
                 ),
               ),
@@ -115,7 +113,6 @@ class MainPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Expanded(child: child,),
-                    const Text('desktop')
                   ],
                 ),
               ),

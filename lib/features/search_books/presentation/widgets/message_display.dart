@@ -7,10 +7,20 @@ class MessageDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.all(10),
-      elevation: 2,
-      child: Center(child: Text(message)),
+    return Padding(
+      padding: const EdgeInsetsGeometry.symmetric(horizontal: 30, vertical: 5),
+      child: Card(
+        elevation: 2,
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsetsGeometry.all(10),
+            child: Text(
+              message,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
